@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel = "stylesheet" href="style.css">
+        <title>My Amazing Blog</title>
+    </head>
+    <body>
+        <div id="sidebar">
+            {% block sidebar %}
+        
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        {% endbloock %}
+    </div>
+    <div id="content">
+        <h2>제목1</h2>
+        <p>내용1</p>
+        <h2>제목2</h2>
+        <p>내용2</p>
+    </div>
+        </body>
+    </body>
+</html>
