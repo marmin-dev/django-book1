@@ -1,12 +1,16 @@
-# 파이썬의 로깅 모듈을 임포트
-import logging
+from django.views.generic.base import TemplateView
+from django.apps import apps
 
-# settings.py파일에서 설정된 로거를 취득함
-logger = logging.getLogger('mylogger')
+# ---TemplateView
+class HomeView(TemplateView):
+    template_name = 'home.html'
 
-
-def my_view(result, arg1, arg):
-    # 필요 로직
-    if bad_mojo:
-        # ERROR 레벨의 로그 레코드를 생성함
-        logger.error('Something Went Wrong')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # context['app_list'] = ['polls','books']
+        dictVerbose = {}
+        for app in apps.get_app_configs(): #1
+            if 'site-packages' not in app.path: #2
+                dictVerbose[app.label]=app.verbose_name#3
+        context['verbose_dict'] = dictVerbose#4
+        return context
