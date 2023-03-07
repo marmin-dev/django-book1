@@ -16,12 +16,13 @@ urlpatterns = [
     path('publisher/', views.PublisherList.as_view(), name='publisher_list'),
 
     # /books/author/99/
-    path('book/<int:pk>', views.BookDetail.as_view(),name='book_detail'),
+    path('book/<int:pk>', views.BookDetail.as_view(), name='book_detail'),
 
     # /books/author/99/
-    path('book/<int:pk>/', views.AuthorDeatil.as_view(), name='author_detail'),
+    path('book/<int:pk>/', views.AuthorDetail.as_view(), name='author_detail'),
 
     # /books/publisher/99/
-    path('publisher/<int:pk>/', views.PublisherDetail.as_view(), name='publisher_detail')
+    path('publisher/<int:pk>/', views.PublisherDetail.as_view(),
+         name='publisher_detail')
 
 ]
