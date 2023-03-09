@@ -3,8 +3,9 @@ from django.http import HttpResponseRedirect
 from polls.models import Question,Choice
 from django.urls import reverse
 from django.views import generic
+import logging
 
-
+logger = logging.getLogger(__name__)
 # ---- Class Based View
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -21,6 +22,7 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 # ----Function Based View
 def vote(request, question_id):
+    logger.debug(f"vote().question_id:{question.id}")
     question = get_object_or_404(Question, pk=question_id)
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
